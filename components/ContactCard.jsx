@@ -16,21 +16,22 @@ import {
     Zap,
     Star,
 } from "lucide-react";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function ContactCard() {
     const [isVisible, setIsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState(0);
     const contactDetails = {
-        name: "MD SHAKIL KHAN",
+        name: "SHAKIL KHAN",
         title: "Software Engineer",
-        organization: "Daffodil International University",
+        organization: "Daffodil International University, Dhaka",
         email: "mdshakilkhan0152@email.com",
         phone: "+880 1521-438781",
         website: "https://mdshakilkhan.netlify.app",
         location: "Dhaka-1207, Bangladesh",
         socialLinks: {
-            linkedin: "https://www.linkedin.com/in/md-shakil-khan/",
+            linkedin: "https://www.linkedin.com/in/md-shakil-khan",
             github: "https://github.com/mdshakilkhan841",
             facebook: "https://www.facebook.com/shakil.khan.0152",
             instagram: "https://instagram.com/shakil2421",
@@ -66,40 +67,44 @@ export default function ContactCard() {
     }, []);
 
     const handleDownload = () => {
+        // Use contactDetails dynamically for vCard
         const vCardData = `BEGIN:VCARD
-VERSION:3.0
-FN:MD SHAKIL KHAN
-ORG:Digital Innovations Lab
-TITLE:Creative Developer & UI/UX Designer
-EMAIL:shakil.khan@email.com
-TEL:+1 (555) 987-6543
-URL:https://shakilkhan.design
-ADR:;;456 Innovation Ave;New York;NY;10001;USA
-END:VCARD`;
+                            VERSION:3.0
+                            FN:${contactDetails.name}
+                            ORG:${contactDetails.organization}
+                            TITLE:${contactDetails.title}
+                            EMAIL:${contactDetails.email}
+                            TEL:${contactDetails.phone}
+                            URL:${contactDetails.website}
+                            ADR:;;${contactDetails.location}
+                            END:VCARD`;
 
         const blob = new Blob([vCardData], { type: "text/vcard" });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "shakil-khan-contact.vcf";
+        link.download = `${contactDetails.name
+            .toLowerCase()
+            .replace(/\s+/g, "-")}-contact.vcf`;
         link.click();
         window.URL.revokeObjectURL(url);
     };
 
     const handleShare = async () => {
+        const shareText = `Facebook: ${contactDetails.socialLinks.facebook}\nInstagram: ${contactDetails.socialLinks.instagram}\nGitHub: ${contactDetails.socialLinks.github}\nLinkedIn: ${contactDetails.socialLinks.linkedin}\n\nWebsite:${window.location.href}\n\nConnect with me - ${contactDetails.title} at ${contactDetails.organization}`;
+        const shareData = {
+            title: `${contactDetails.name} - Digital Contact Card`,
+            text: shareText,
+        };
         if (navigator.share) {
             try {
-                await navigator.share({
-                    title: "MD Shakil Khan - Digital Contact Card",
-                    text: "Connect with me - Creative Developer & Designer",
-                    url: window.location.href,
-                });
+                await navigator.share(shareData);
             } catch (error) {
                 console.log("Error sharing:", error);
             }
         } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert("Link copied to clipboard!");
+            navigator.clipboard.writeText(shareText);
+            alert("Contact card info copied to clipboard!");
         }
     };
 
@@ -145,10 +150,11 @@ END:VCARD`;
                                         <div className="w-32 h-32 rounded-full bg-gray-900"></div>
                                     </div>
                                     <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl">
-                                        <img
-                                            src="/placeholder.svg?height=128&width=128"
+                                        <Image
+                                            src={require("@/assets/images/shakil.jpeg")}
                                             alt="Profile"
                                             className="w-full h-full object-cover"
+                                            layout="fill"
                                         />
                                     </div>
                                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-gray-800 animate-pulse"></div>
@@ -178,13 +184,16 @@ END:VCARD`;
                                 </div>
 
                                 {/* Status Indicator */}
-                                <div className="hidden lg:block">
-                                    <div className="text-right">
-                                        <div className="flex items-center gap-2 text-green-400 mb-2">
+                                <div className="">
+                                    <div className="text-right sm:block flex gap-2">
+                                        <div className="flex items-center gap-2 text-green-400 sm:mb-2 mb-1">
                                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                                             <span className="text-sm">
                                                 Available for projects
                                             </span>
+                                        </div>
+                                        <div className="text-white block sm:hidden">
+                                            |
                                         </div>
                                         <div className="flex items-center gap-1 text-yellow-400">
                                             {[...Array(5)].map((_, i) => (
@@ -399,9 +408,7 @@ END:VCARD`;
                             "Innovation distinguishes between a leader and a
                             follower."
                         </p>
-                        <p className="text-gray-500 text-sm mt-2">
-                            - Steve Jobs
-                        </p>
+                        <p className="text-gray-500 text-sm">- Steve Jobs</p>
                     </div>
                 </div>
             </div>
