@@ -1,23 +1,26 @@
 "use client";
 
-import {
-    Mail,
-    Phone,
-    MapPin,
-    Globe,
-    Linkedin,
-    Twitter,
-    Github,
-    Instagram,
-    Facebook,
-    Download,
-    Share2,
-    Code,
-    Zap,
-    Star,
-} from "lucide-react";
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import {
+    FiMail,
+    FiPhone,
+    FiGlobe,
+    FiMapPin,
+    FiDownload,
+    FiShare2,
+    FiCode,
+    FiZap,
+    FiStar,
+} from "react-icons/fi";
+import {
+    FaLinkedinIn,
+    FaGithub,
+    FaXTwitter,
+    FaWhatsapp,
+    FaInstagram,
+    FaFacebookF,
+} from "react-icons/fa6";
 
 const quotes = [
     {
@@ -99,6 +102,7 @@ export default function ContactCard() {
             github: "https://github.com/mdshakilkhan841",
             facebook: "https://www.facebook.com/shakil.khan.0152",
             instagram: "https://instagram.com/shakil2421",
+            whatsapp: "https://wa.me/8801521438781",
         },
         skills: [
             "React",
@@ -249,11 +253,11 @@ export default function ContactCard() {
                                     </h1>
                                     <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-4">
                                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors">
-                                            <Code className="w-3 h-3 mr-1" />
+                                            <FiCode className="w-3 h-3 mr-1" />
                                             Creative Developer
                                         </span>
                                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 transition-colors">
-                                            <Zap className="w-3 h-3 mr-1" />
+                                            <FiZap className="w-3 h-3 mr-1" />
                                             MERN Stack Enthusiast
                                         </span>
                                     </div>
@@ -279,7 +283,7 @@ export default function ContactCard() {
                                         </div>
                                         <div className="flex items-center gap-1 text-yellow-400">
                                             {[...Array(5)].map((_, i) => (
-                                                <Star
+                                                <FiStar
                                                     key={i}
                                                     className="w-3 h-3 fill-current"
                                                 />
@@ -307,14 +311,14 @@ export default function ContactCard() {
                                     <div className="space-y-4">
                                         {[
                                             {
-                                                icon: Mail,
+                                                icon: FiMail,
                                                 label: "Email",
                                                 value: contactDetails.email,
                                                 href: `mailto:${contactDetails.email}`,
                                                 color: "text-cyan-400",
                                             },
                                             {
-                                                icon: Phone,
+                                                icon: FiPhone,
                                                 label: "Phone",
                                                 value: contactDetails.phone,
                                                 href: `tel:${contactDetails.phone.replace(
@@ -324,7 +328,7 @@ export default function ContactCard() {
                                                 color: "text-purple-400",
                                             },
                                             {
-                                                icon: Globe,
+                                                icon: FiGlobe,
                                                 label: "Website",
                                                 value: contactDetails.website.replace(
                                                     /^https?:\/\//,
@@ -334,7 +338,7 @@ export default function ContactCard() {
                                                 color: "text-pink-400",
                                             },
                                             {
-                                                icon: MapPin,
+                                                icon: FiMapPin,
                                                 label: "Location",
                                                 value: contactDetails.location,
                                                 href: null,
@@ -385,40 +389,46 @@ export default function ContactCard() {
                                         <div className="grid grid-cols-2 gap-3">
                                             {[
                                                 {
-                                                    icon: Linkedin,
+                                                    icon: FaLinkedinIn,
                                                     name: "LinkedIn",
                                                     href: contactDetails
                                                         .socialLinks.linkedin,
-                                                    color: "from-blue-600 to-blue-700",
+                                                    color: "from-blue-900 to-blue-800",
                                                 },
                                                 {
-                                                    icon: Github,
+                                                    icon: FaGithub,
                                                     name: "GitHub",
                                                     href: contactDetails
                                                         .socialLinks.github,
                                                     color: "from-gray-700 to-gray-800",
                                                 },
                                                 {
-                                                    icon: Twitter,
+                                                    icon: FaXTwitter,
                                                     name: "Twitter",
                                                     href: contactDetails
                                                         .socialLinks.twitter,
-                                                    color: "from-sky-500 to-sky-600",
+                                                    color: "from-gray-950 to-gray-900",
                                                 },
                                                 {
-                                                    icon: Instagram,
+                                                    icon: FaInstagram,
                                                     name: "Instagram",
                                                     href: contactDetails
                                                         .socialLinks.instagram,
                                                     color: "from-pink-500 to-purple-600",
                                                 },
                                                 {
-                                                    // Add Facebook button
-                                                    icon: Facebook,
+                                                    icon: FaFacebookF,
                                                     name: "Facebook",
                                                     href: contactDetails
                                                         .socialLinks.facebook,
-                                                    color: "from-blue-500 to-blue-600",
+                                                    color: "from-blue-600 to-blue-800",
+                                                },
+                                                {
+                                                    icon: FaWhatsapp,
+                                                    name: "Whatsapp",
+                                                    href: contactDetails
+                                                        .socialLinks.whatsapp,
+                                                    color: "from-green-600 to-green-700",
                                                 },
                                             ].map((social, index) => (
                                                 <a
@@ -469,7 +479,7 @@ export default function ContactCard() {
                                     onClick={handleDownload}
                                     className="flex-1 inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 h-12"
                                 >
-                                    <Download className="w-5 h-5 mr-2" />
+                                    <FiDownload className="w-5 h-5 mr-2" />
                                     Save Contact
                                 </button>
 
@@ -477,7 +487,7 @@ export default function ContactCard() {
                                     onClick={handleShare}
                                     className="flex-1 inline-flex items-center justify-center px-4 py-3 rounded-md text-sm font-medium text-white border-2 border-gray-600 hover:border-cyan-400 bg-gray-800/50 hover:bg-gray-700/50 hover:text-cyan-300 transition-all duration-300 h-12"
                                 >
-                                    <Share2 className="w-5 h-5 mr-2" />
+                                    <FiShare2 className="w-5 h-5 mr-2" />
                                     Share Card
                                 </button>
                             </div>
