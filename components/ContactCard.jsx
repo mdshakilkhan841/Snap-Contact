@@ -19,9 +19,73 @@ import {
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+const quotes = [
+    {
+        quote: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs",
+    },
+    {
+        quote: "The only source of knowledge is experience.",
+        author: "Albert Einstein",
+    },
+    {
+        quote: "Leadership and learning are indispensable to each other.",
+        author: "John F. Kennedy",
+    },
+    {
+        quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        author: "Winston Churchill",
+    },
+    {
+        quote: "Don’t judge each day by the harvest you reap but by the seeds that you plant.",
+        author: "Robert Louis Stevenson",
+    },
+    {
+        quote: "Skill is only developed by hours and hours of work.",
+        author: "Usain Bolt",
+    },
+    {
+        quote: "An investment in knowledge pays the best interest.",
+        author: "Benjamin Franklin",
+    },
+    {
+        quote: "The function of leadership is to produce more leaders, not more followers.",
+        author: "Ralph Nader",
+    },
+    {
+        quote: "The future belongs to those who learn more skills and combine them in creative ways.",
+        author: "Robert Greene",
+    },
+    {
+        quote: "What you get by achieving your goals is not as important as what you become by achieving your goals.",
+        author: "Zig Ziglar",
+    },
+    {
+        quote: "Success usually comes to those who are too busy to be looking for it.",
+        author: "Henry David Thoreau",
+    },
+    {
+        quote: "Motivation is what gets you started. Habit is what keeps you going.",
+        author: "Jim Ryun",
+    },
+    {
+        quote: "The mind is not a vessel to be filled but a fire to be kindled.",
+        author: "Plutarch",
+    },
+    {
+        quote: "A good leader takes a little more than his share of the blame, a little less than his share of the credit.",
+        author: "Arnold H. Glasgow",
+    },
+    {
+        quote: "You don’t learn to walk by following rules. You learn by doing, and by falling over.",
+        author: "Richard Branson",
+    },
+];
+
 export default function ContactCard() {
     const [isVisible, setIsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState(0);
+    const [footerQuoteIndex, setFooterQuoteIndex] = useState(0);
     const contactDetails = {
         name: "SHAKIL KHAN",
         title: "Software Engineer",
@@ -59,12 +123,30 @@ export default function ContactCard() {
     };
 
     useEffect(() => {
+        setFooterQuoteIndex(Math.floor(Math.random() * quotes.length));
+    }, []);
+
+    useEffect(() => {
         setIsVisible(true);
         const interval = setInterval(() => {
             setActiveSection((prev) => (prev + 1) % 3);
         }, 3000);
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        const quoteInterval = setInterval(() => {
+            setFooterQuoteIndex((prev) => {
+                let next = Math.floor(Math.random() * quotes.length);
+                // Ensure a different quote is shown
+                while (next === prev && quotes.length > 1) {
+                    next = Math.floor(Math.random() * quotes.length);
+                }
+                return next;
+            });
+        }, 5000);
+        return () => clearInterval(quoteInterval);
+    }, [quotes.length]);
 
     const handleDownload = () => {
         // Use contactDetails dynamically for vCard
@@ -131,7 +213,7 @@ export default function ContactCard() {
                 ></div>
             </div>
 
-            <div className="relative z-10 p-4 flex items-center justify-center min-h-screen">
+            <div className="relative z-10 p-2 flex items-center justify-center min-h-screen">
                 <div
                     className={`w-full max-w-4xl transition-all duration-1000 ${
                         isVisible
@@ -142,7 +224,7 @@ export default function ContactCard() {
                     {/* Main Card */}
                     <div className="bg-gray-800/80 backdrop-blur-xl border border-gray-700/50 shadow-2xl rounded-lg overflow-hidden">
                         {/* Header Section */}
-                        <div className="relative p-8 bg-gradient-to-r from-gray-800 via-gray-900 to-black">
+                        <div className="relative sm:p-8 p-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black">
                             <div className="flex flex-col lg:flex-row items-center gap-8">
                                 {/* Profile Image with Neon Ring */}
                                 <div className="relative">
@@ -212,7 +294,7 @@ export default function ContactCard() {
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-8">
+                        <div className="sm:p-8 p-4">
                             {/* Content Grid */}
                             <div className="grid lg:grid-cols-2 gap-8 mb-8">
                                 {/* Contact Information */}
@@ -405,10 +487,11 @@ export default function ContactCard() {
                     {/* Footer Quote */}
                     <div className="text-center mt-8">
                         <p className="text-gray-400 italic text-lg">
-                            "Innovation distinguishes between a leader and a
-                            follower."
+                            "{quotes[footerQuoteIndex].quote}"
                         </p>
-                        <p className="text-gray-500 text-sm">- Steve Jobs</p>
+                        <p className="text-gray-500 text-sm">
+                            - {quotes[footerQuoteIndex].author}
+                        </p>
                     </div>
                 </div>
             </div>
