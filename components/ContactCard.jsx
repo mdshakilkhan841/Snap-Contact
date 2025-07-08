@@ -213,7 +213,7 @@ export default function ContactCard() {
                 ></div>
             </div>
 
-            <div className="relative z-10 p-2 flex items-center justify-center min-h-screen">
+            <div className="relative z-10 sm:p-8 p-2 flex items-center justify-center min-h-screen">
                 <div
                     className={`w-full max-w-4xl transition-all duration-1000 ${
                         isVisible
