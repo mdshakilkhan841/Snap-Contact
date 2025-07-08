@@ -239,7 +239,7 @@ export default function ContactCard() {
                                             layout="fill"
                                         />
                                     </div>
-                                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-gray-800 animate-pulse"></div>
+                                    <div className="absolute bottom-1 right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-gray-800 animate-pulse"></div>
                                 </div>
 
                                 {/* Name and Title */}
