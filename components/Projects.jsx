@@ -16,7 +16,7 @@ import {
     SiSocketdotio,
     SiTailwindcss,
     SiGit,
-    SiCss3,
+    SiCss as SiCss3,
     SiHtml5,
 } from "react-icons/si";
 import { BiLogoVisualStudio } from "react-icons/bi";
