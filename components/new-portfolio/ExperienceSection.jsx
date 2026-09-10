@@ -4,25 +4,15 @@ import React from "react";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function ExperienceSection() {
-  const experiences = [
-    {
-      num: "01",
-      role: "Software Engineer",
-      company: "Techdojo Limited",
-      period: "2023-Present"
-    },
-    {
-      num: "02",
-      role: "Frontend Developer Intern",
-      company: "Koel Fresh Pvt Ltd",
-      period: "2022-2023"
-    },
-    {
-      num: "03",
-      role: "Full-Stack Developer",
-      company: "Independent Projects",
-      period: "2021-2022"
-    }
+  const experiences = portfolioData.experience;
+
+  const coreTech = [
+    { name: "React", desc: "React 19 & Next.js" },
+    { name: "React Native", desc: "Expo & Native iOS/Android" },
+    { name: "Fastify / Node", desc: "Scalable Microservices" },
+    { name: "PostgreSQL", desc: "Multi-Tenant & Drizzle ORM" },
+    { name: "Three.js", desc: "3D Graphics & WebGL" },
+    { name: "Docker", desc: "Containerized Cloud" }
   ];
 
   return (
@@ -30,48 +20,45 @@ export default function ExperienceSection() {
       <div className="cv_container container-fluid">
         <div className="row align-items-center">
           <div className="col-xl-8">
-            {experiences.map((item) => (
-              <div key={item.num} className="cv_exp_box">
-                <h2>{item.num}</h2>
+            {experiences.map((item, idx) => (
+              <div key={item.id || idx} className="cv_exp_box">
+                <h2>{String(idx + 1).padStart(2, "0")}</h2>
                 <div className="cv_exp_com">
                   <span>
                     <h3>{item.role}</h3>
                     <h4>- {item.company}</h4>
                   </span>
                   <h5>({item.period})</h5>
+                  <p style={{ color: "#94A3B8", fontSize: "14px", marginTop: "8px", lineHeight: "1.5" }}>
+                    {item.points && item.points[0]}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
+
           <div className="col-xl-4">
             <div className="cv_exp_info">
               <div className="cv_exp_heading">
                 <h2>My Experience</h2>
                 <p>
-                  Over 3+ years delivering performant web and mobile applications using modern frameworks including Next.js, React, Node.js, React Native, and enterprise databases.
+                  Over 3+ years architecting scalable full-stack web platforms and high-performance mobile apps. Proven track record serving 100,000+ active users with 60 FPS mobile performance and distributed cloud backends.
                 </p>
-                <ul>
-                  <li>
-                    <a href="javascript:void(0);">
-                      <img src="/new-portfolio/images/fig.svg" alt="Figma" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">
-                      <img src="/new-portfolio/images/ps.svg" alt="Photoshop" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">
-                      <img src="/new-portfolio/images/ai.svg" alt="Illustrator" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">
-                      <img src="/new-portfolio/images/ae.svg" alt="After Effects" />
-                    </a>
-                  </li>
-                </ul>
+
+                {/* Modern Developer Core Competencies */}
+                <div className="cv_dev_tech_badges_wrap mt-3">
+                  <div className="cv_dev_tech_grid">
+                    {coreTech.map((tech, idx) => (
+                      <div key={idx} className="cv_dev_tech_item">
+                        <span className="cv_dev_tech_dot" />
+                        <div>
+                          <strong>{tech.name}</strong>
+                          <small>{tech.desc}</small>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

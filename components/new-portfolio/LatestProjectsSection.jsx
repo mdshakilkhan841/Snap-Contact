@@ -5,29 +5,10 @@ import Link from "next/link";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function LatestProjectsSection() {
-  const projects = [
-    {
-      img: "/new-portfolio/images/proj-1.webp",
-      cat: "Full-Stack Development",
-      time: "Recent",
-      title: "Exclusive-Shop: Scalable MERN & Next.js Store",
-      link: "https://github.com/mdshakilkhan841/Exclusive-Shop"
-    },
-    {
-      img: "/new-portfolio/images/proj-2.webp",
-      cat: "Analytics System",
-      time: "Recent",
-      title: "Monthly Reporting & Operational Dashboard",
-      link: "https://monthly-report-rho.vercel.app"
-    },
-    {
-      img: "/new-portfolio/images/proj-3.webp",
-      cat: "Mobile Engineering",
-      time: "Recent",
-      title: "DCL Oddo App: Cross-Platform React Native",
-      link: "https://github.com/mdshakilkhan841/DCL-Oddo-Mobile-Application"
-    }
-  ];
+  // Grab top featured production projects dynamically
+  const featuredProjects = portfolioData.projects
+    .filter((p) => p.featured)
+    .slice(0, 3);
 
   return (
     <section className="cv_project_wrapper">
@@ -35,38 +16,49 @@ export default function LatestProjectsSection() {
         <div className="row">
           <div className="col-12">
             <div className="cv_sec_heading">
-              <h2>Latest Projects</h2>
+              <h2>Latest Production Projects</h2>
               <p>
-                A preview of recent production-ready applications, open-source repositories, and web services.
+                A curated selection of scalable clinical SaaS backends, high-concurrency mobile apps, and interactive 3D simulations.
               </p>
             </div>
           </div>
           <div className="col-12">
             <div className="cv_project_content">
-              {projects.map((proj, idx) => (
-                <div key={idx} className="cv_project_box">
+              {featuredProjects.map((proj) => (
+                <div key={proj.id} className="cv_project_box">
                   <div className="cv_project_img">
                     <img
-                      src={proj.img}
+                      src={proj.image}
                       alt={proj.title}
                       className="img-fluid"
                     />
                   </div>
                   <div className="cv_project_text">
                     <div className="cv_project_heading">
-                      <p>{proj.cat}</p>
+                      <p>{proj.badge || proj.category}</p>
                       <span>
                         <img
                           src="/new-portfolio/images/time.svg"
-                          alt="Time"
+                          alt="Production"
                         />
-                        {proj.time}
+                        Production
                       </span>
                     </div>
                     <div className="cv_project_title">
-                      <a href={proj.link} target="_blank" rel="noreferrer">
+                      <a
+                        href={proj.live && proj.live !== "#" ? proj.live : proj.github}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <p>{proj.title}</p>
                       </a>
+                    </div>
+                    <div className="cv_project_techs" style={{ marginTop: "10px", display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                      {proj.technologies.slice(0, 3).map((t, i) => (
+                        <span key={i} style={{ fontSize: "11px", color: "#94A3B8", background: "rgba(255,255,255,0.06)", padding: "2px 8px", borderRadius: "4px" }}>
+                          {t}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -76,7 +68,7 @@ export default function LatestProjectsSection() {
           <div className="col-12">
             <div className="cv_bottom_btn">
               <Link href="/new-portfolio/portfolio" className="cv_btn">
-                View More
+                View All 21 Projects
               </Link>
             </div>
           </div>

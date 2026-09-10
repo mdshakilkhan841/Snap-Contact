@@ -3905,6 +3905,300 @@ Max - Width Query
     }
 }
 
+/* -------------------------------------------------------------
+   7. Enhanced Responsive Portfolio Gallery & Project Showcase
+   ------------------------------------------------------------- */
+.cv_port_tab_expanded {
+    max-width: 880px !important;
+    gap: 8px;
+    padding: 6px;
+    flex-wrap: wrap;
+    justify-content: center !important;
+}
+
+.cv_port_tab_btn {
+    color: #94A3B8;
+    background: transparent;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.cv_port_tab_btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.cv_port_tab_btn.active {
+    background: var(--cv-primary-color) !important;
+    color: #000000 !important;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(46, 227, 184, 0.3);
+}
+
+.cv_tab_counter {
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 12px;
+}
+
+.cv_port_tab_btn.active .cv_tab_counter {
+    background: rgba(0, 0, 0, 0.2);
+    color: #000000;
+}
+
+.cv_portfolio_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 15px;
+}
+
+.cv_project_card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv_project_card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(46, 227, 184, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(46, 227, 184, 0.1);
+}
+
+.cv_card_media {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.cv_card_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.cv_project_card:hover .cv_card_img {
+    transform: scale(1.05);
+}
+
+.cv_card_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(11, 15, 23, 0.85) 100%);
+}
+
+.cv_card_badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.cv_badge_category {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #E2E8F0;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.cv_badge_highlight {
+    background: rgba(46, 227, 184, 0.18);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(46, 227, 184, 0.35);
+    color: #2EE3B8;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.cv_card_body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.cv_card_title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.35;
+}
+
+.cv_card_desc {
+    color: #94A3B8;
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cv_card_tech_pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.cv_tech_pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #CBD5E1;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.cv_card_actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cv_btn_live {
+    background: var(--cv-primary-color);
+    color: #000000;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+}
+
+.cv_btn_live:hover {
+    background: #25cba3;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+.cv_btn_code {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.cv_btn_code:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Experience Developer Tech Badges */
+.cv_dev_tech_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.cv_dev_tech_item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv_dev_tech_dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cv-primary-color);
+    box-shadow: 0 0 8px var(--cv-primary-color);
+    flex-shrink: 0;
+}
+
+.cv_dev_tech_item strong {
+    display: block;
+    color: #ffffff;
+    font-size: 12.5px;
+    line-height: 1.2;
+}
+
+.cv_dev_tech_item small {
+    color: #94A3B8;
+    font-size: 10.5px;
+    line-height: 1.2;
+}
+
+.cv_honor_card:hover {
+    border-color: rgba(46, 227, 184, 0.3) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Breakpoints for Portfolio Grid */
+@media (max-width: 1200px) {
+    .cv_portfolio_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cv_portfolio_grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .cv_port_tab_expanded {
+        max-width: 100% !important;
+        border-radius: 16px;
+    }
+    .cv_port_tab_btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+
 
 
 

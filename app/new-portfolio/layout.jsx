@@ -6,7 +6,7 @@ import PageTransition from "@/components/new-portfolio/PageTransition";
 export const metadata = {
   title: "Md Shakil Khan | Full Stack Software Engineer",
   description:
-    "Portfolio of Md Shakil Khan, B.Tech CSE NIT Rourkela graduate and Software Engineer at Techdojo Limited specializing in Next.js, React, Node.js, React Native, and full-stack software architecture.",
+    "Portfolio of Md Shakil Khan, CSE Graduate from NIT Rourkela and Software Developer at Daffodil International University (DIU), $1M Bloomberg Mayors Challenge Winner specializing in React, Next.js, React Native, Fastify, and PostgreSQL.",
   keywords: [
     "Md Shakil Khan",
     "Shakil Khan",

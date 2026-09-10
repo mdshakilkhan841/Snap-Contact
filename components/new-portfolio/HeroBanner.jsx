@@ -4,14 +4,12 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { portfolioData } from "@/data/portfolioData";
 
-
-
 export default function HeroBanner() {
   const titles = [
     "Full Stack Software Engineer !",
-    "MERN & Next.js Specialist !",
     "React Native Mobile Dev !",
-    "Scalable Backend Architect !"
+    "SaaS & Backend Architect !",
+    "NIT Rourkela CSE Graduate !"
   ];
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -34,14 +32,14 @@ export default function HeroBanner() {
     if (activeTab === "engineer.ts") {
       snippet = `const engineer: SoftwareEngineer = {
   name: "Md Shakil Khan",
-  role: "Software Engineer @ Techdojo",
-  stack: ["Next.js 15", "React 19", "React Native", "PostgreSQL"],
+  role: "Software Developer @ DIU",
+  stack: ["Next.js", "React", "React Native", "PostgreSQL", "Fastify"],
   status: "Open for impactful roles 🚀"
 };`;
     } else if (activeTab === "stack.json") {
-      snippet = `{\n  "name": "Md Shakil Khan",\n  "role": "Software Engineer",\n  "coreStack": ["Next.js", "React 19", "TypeScript", "PostgreSQL"],\n  "openForWork": true\n}`;
+      snippet = `{\n  "name": "Md Shakil Khan",\n  "role": "Software Developer @ DIU",\n  "coreStack": ["Next.js", "React", "React Native", "TypeScript", "PostgreSQL"],\n  "openForWork": true\n}`;
     } else {
-      snippet = `shakil@macbook:~$ whoami\nMd Shakil Khan • Software Engineer @ Techdojo (NIT Rourkela CSE)\nshakil@macbook:~$ npx shakil --stack\nNext.js 15 • React 19 • React Native • TypeScript • PostgreSQL`;
+      snippet = `shakil@macbook:~$ whoami\nMd Shakil Khan • Software Developer @ DIU & Techdojo (NIT Rourkela CSE)\nshakil@macbook:~$ npx shakil --stack\nNext.js • React • React Native • TypeScript • PostgreSQL • Fastify`;
     }
 
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -105,7 +103,7 @@ export default function HeroBanner() {
               </div>
 
               <p className="cv_hero_bio">
-                Software Engineer at <strong>Techdojo Limited</strong> &bull; CSE graduate from <strong>NIT Rourkela</strong>. Engineering high-performance web platforms with <strong>React 19 &amp; Next.js 15</strong>, cross-platform mobile apps with <strong>React Native</strong>, and scalable cloud architectures.
+                Software Developer at <strong>Daffodil International University (DIU)</strong> &bull; Formerly at <strong>Techdojo Limited</strong> &bull; CSE graduate from <strong>NIT Rourkela</strong>. Engineering high-performance web platforms with <strong>React &amp; Next.js</strong>, cross-platform mobile apps with <strong>React Native &amp; Expo</strong>, and scalable cloud architectures.
               </p>
 
               {/* Developer Action Deck */}
@@ -173,8 +171,13 @@ export default function HeroBanner() {
                 </div>
                 <div className="cv_metric_sep" />
                 <div className="cv_metric_item">
-                  <span className="cv_metric_num">25+</span>
+                  <span className="cv_metric_num">21+</span>
                   <span className="cv_metric_txt">Shipped Apps</span>
+                </div>
+                <div className="cv_metric_sep" />
+                <div className="cv_metric_item">
+                  <span className="cv_metric_num">100k+</span>
+                  <span className="cv_metric_txt">Active Users</span>
                 </div>
                 <div className="cv_metric_sep" />
                 <div className="cv_metric_item">
@@ -265,10 +268,10 @@ export default function HeroBanner() {
                         <span className="cv_k_prop">name</span>: <span className="cv_k_str">&quot;Md Shakil Khan&quot;</span>,
                       </div>
                       <div className="cv_code_row cv_indent">
-                        <span className="cv_k_prop">role</span>: <span className="cv_k_str">&quot;Software Engineer @ Techdojo&quot;</span>,
+                        <span className="cv_k_prop">role</span>: <span className="cv_k_str">&quot;Software Developer @ DIU&quot;</span>,
                       </div>
                       <div className="cv_code_row cv_indent">
-                        <span className="cv_k_prop">stack</span>: <span className="cv_k_arr">[</span><span className="cv_k_str">&quot;Next.js 15&quot;</span>, <span className="cv_k_str">&quot;React 19&quot;</span>, <span className="cv_k_str">&quot;React Native&quot;</span><span className="cv_k_arr">]</span>,
+                        <span className="cv_k_prop">stack</span>: <span className="cv_k_arr">[</span><span className="cv_k_str">&quot;Next.js&quot;</span>, <span className="cv_k_str">&quot;React&quot;</span>, <span className="cv_k_str">&quot;React Native&quot;</span>, <span className="cv_k_str">&quot;PostgreSQL&quot;</span><span className="cv_k_arr">]</span>,
                       </div>
                       <div className="cv_code_row cv_indent">
                         <span className="cv_k_prop">status</span>: <span className="cv_k_str">&quot;Open for impactful roles 🚀&quot;</span>
@@ -293,8 +296,8 @@ export default function HeroBanner() {
                     <div className="cv_ide_code_content">
                       <div className="cv_code_row"><span className="cv_j_brace">&#123;</span></div>
                       <div className="cv_code_row cv_indent"><span className="cv_j_key">&quot;name&quot;</span>: <span className="cv_j_str">&quot;Md Shakil Khan&quot;</span>,</div>
-                      <div className="cv_code_row cv_indent"><span className="cv_j_key">&quot;role&quot;</span>: <span className="cv_j_str">&quot;Software Engineer @ Techdojo&quot;</span>,</div>
-                      <div className="cv_code_row cv_indent"><span className="cv_j_key">&quot;coreStack&quot;</span>: <span className="cv_j_arr">[</span><span className="cv_j_str">&quot;Next.js&quot;</span>, <span className="cv_j_str">&quot;React 19&quot;</span>, <span className="cv_j_str">&quot;React Native&quot;</span><span className="cv_j_arr">]</span>,</div>
+                      <div className="cv_code_row cv_indent"><span className="cv_j_key">&quot;role&quot;</span>: <span className="cv_j_str">&quot;Software Developer @ DIU&quot;</span>,</div>
+                      <div className="cv_code_row cv_indent"><span className="cv_j_key">&quot;coreStack&quot;</span>: <span className="cv_j_arr">[</span><span className="cv_j_str">&quot;Next.js&quot;</span>, <span className="cv_j_str">&quot;React&quot;</span>, <span className="cv_j_str">&quot;React Native&quot;</span>, <span className="cv_j_str">&quot;PostgreSQL&quot;</span><span className="cv_j_arr">]</span>,</div>
                       <div className="cv_code_row cv_indent"><span className="cv_j_key">&quot;openForOpportunities&quot;</span>: <span className="cv_k_bool">true</span></div>
                       <div className="cv_code_row"><span className="cv_j_brace">&#125;</span></div>
                     </div>
@@ -308,14 +311,14 @@ export default function HeroBanner() {
                       <span className="cv_term_cmd_txt"> whoami</span>
                     </div>
                     <div className="cv_term_out cyan">
-                      Md Shakil Khan &bull; Software Engineer @ Techdojo (NIT Rourkela CSE)
+                      Md Shakil Khan &bull; Software Developer @ DIU &bull; NIT Rourkela CSE
                     </div>
                     <div className="cv_term_cmd_line">
                       <span className="cv_term_prompt">shakil@macbook:~$</span>
                       <span className="cv_term_cmd_txt"> npx shakil --stack</span>
                     </div>
                     <div className="cv_term_out green">
-                      Next.js 15 &bull; React 19 &bull; React Native &bull; TypeScript &bull; PostgreSQL
+                      Next.js &bull; React &bull; React Native &bull; TypeScript &bull; PostgreSQL &bull; Fastify
                     </div>
                     <div className="cv_term_cmd_line cv_term_active_line">
                       <span className="cv_term_prompt">shakil@macbook:~$</span>
