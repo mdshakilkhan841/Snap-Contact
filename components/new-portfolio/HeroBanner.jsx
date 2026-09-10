@@ -12,6 +12,14 @@ export default function HeroBanner() {
     "NIT Rourkela CSE Graduate !"
   ];
 
+  const navLinks = [
+    { href: "/new-portfolio", label: "Home" },
+    { href: "/new-portfolio/about", label: "About" },
+    { href: "/new-portfolio/portfolio", label: "My Work" },
+    { href: "/new-portfolio/strength", label: "Strength" },
+    { href: "/new-portfolio/contact", label: "Contact" }
+  ];
+
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -78,9 +86,75 @@ export default function HeroBanner() {
   return (
     <div className="cv_banner_wrapper">
       <div className="cv_container container-fluid">
-        <div className="row align-items-center">
-          {/* Left Column: Developer Introduction & Value Proposition */}
-          <div className="col-xl-6 col-lg-6">
+        <div className="row align-items-center justify-content-between g-4 g-xxl-5">
+          {/* Left Column: Persistent Navigation Menu (Matching Menu Overlay Design) */}
+          <div className="col-xxl-2 col-xl-3 col-lg-3 d-none d-lg-block">
+            <div className="cv_home_side_nav_wrapper">
+              <ul className="cv_home_side_menu">
+                {navLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`cv_home_side_link ${item.href === "/new-portfolio" ? "active" : ""}`}
+                    >
+                      <span className="cv_home_side_dash" />
+                      <span className="cv_home_side_text">{item.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Follow Me Social Section (Matching Overlay Menu in Screenshot) */}
+              <div className="cv_home_side_social">
+                <span className="cv_home_social_title">Follow Me</span>
+                <ul className="cv_home_social_list">
+                  <li>
+                    <a
+                      href={portfolioData.personal.socialLinks.facebook || "#"}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Facebook"
+                    >
+                      <img src="/new-portfolio/images/fb.svg" alt="Facebook" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={portfolioData.personal.socialLinks.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="LinkedIn"
+                    >
+                      <img src="/new-portfolio/images/in.svg" alt="LinkedIn" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={portfolioData.personal.socialLinks.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <img src="/new-portfolio/images/github.svg" alt="GitHub" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={portfolioData.personal.whatsapp}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="WhatsApp"
+                    >
+                      <img src="/new-portfolio/images/whatsapp.svg" alt="WhatsApp" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Column: Developer Introduction & Value Proposition */}
+          <div className="col-xxl-6 col-xl-5 col-lg-5 col-12">
             <div className="cv_banner_intro">
               <h2 className="cv_greeting_heading">
                 Hello!{" "}
@@ -189,7 +263,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Right Column: Clean & Balanced Interactive VS Code / Terminal Window */}
-          <div className="col-xl-6 col-lg-6">
+          <div className="col-xxl-4 col-xl-4 col-lg-4 col-12">
             <div className="cv_banner_box cv_dev_code_window">
               <div className="cv_dev_window_header">
                 <div className="cv_dev_window_dots">

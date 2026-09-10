@@ -159,20 +159,20 @@ export default function Header() {
                         rel="noreferrer"
                       >
                         <img
-                          src="/new-portfolio/images/tw.svg"
+                          src="/new-portfolio/images/github.svg"
                           alt="GitHub"
                         />
                       </a>
                     </li>
                     <li>
                       <a
-                        href={portfolioData.personal.socialLinks.instagram}
+                        href={portfolioData.personal.whatsapp}
                         target="_blank"
                         rel="noreferrer"
                       >
                         <img
-                          src="/new-portfolio/images/pi.svg"
-                          alt="Instagram"
+                          src="/new-portfolio/images/whatsapp.svg"
+                          alt="WhatsApp"
                         />
                       </a>
                     </li>
