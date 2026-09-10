@@ -156,8 +156,21 @@ section{
     row-gap: 24px;
 }
 
-.cv_bottom_btn a{
-    margin: 15px auto 0;
+.cv_bottom_btn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.cv_bottom_btn a,
+.cv_bottom_btn button,
+.cv_bottom_btn .cv_btn {
+    margin: 25px auto 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -3911,9 +3924,12 @@ Max - Width Query
 .cv_port_tab_expanded {
     max-width: 880px !important;
     gap: 8px;
-    padding: 6px;
+    padding: 6px !important;
+    margin: 0 auto 16px !important;
+    list-style: none !important;
     flex-wrap: wrap;
     justify-content: center !important;
+    box-sizing: border-box;
 }
 
 .cv_port_tab_btn {
@@ -3956,245 +3972,622 @@ Max - Width Query
     color: #000000;
 }
 
-.cv_portfolio_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    margin-top: 15px;
+/* -------------------------------------------------------------
+   7. Unique Engineering List & Bento Architecture Showcase
+   ------------------------------------------------------------- */
+.cv_portfolio_badge_top {
+    display: inline-block;
+    margin-bottom: 12px;
 }
 
-.cv_project_card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+.cv_portfolio_badge_top span {
+    background: rgba(46, 227, 184, 0.12);
+    border: 1px solid rgba(46, 227, 184, 0.3);
+    color: #2ee3b8;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 5px 16px;
+    border-radius: 24px;
+}
+
+.cv_portfolio_main_heading {
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+}
+
+.cv_portfolio_subtext {
+    color: #94a3b8;
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 15.5px;
+    line-height: 1.65;
+}
+
+/* Key Impact Stats Bar */
+.cv_spotlight_stats_bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 36px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    overflow: hidden;
+    border-radius: 18px;
+    margin: 28px auto 32px;
+    max-width: 1040px;
+    backdrop-filter: blur(8px);
+}
+
+.cv_spotlight_stat_item {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cv_spotlight_stat_num {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    background: linear-gradient(90deg, #ffffff 0%, #2ee3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.cv_spotlight_stat_label {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.cv_spotlight_stat_divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Control Toolbar & Switcher */
+.cv_portfolio_control_toolbar {
+    display: flex;
     justify-content: space-between;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.cv_project_card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(46, 227, 184, 0.4);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(46, 227, 184, 0.1);
+.cv_view_switcher {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    backdrop-filter: blur(8px);
 }
 
-.cv_card_media {
-    position: relative;
-    height: 200px;
+.cv_view_switch_btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    border: none;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.cv_view_switch_btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cv_view_switch_btn.active {
+    background: var(--cv-primary-color);
+    color: #000000;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(46, 227, 184, 0.28);
+}
+
+/* =============================================================
+   AUTHENTIC TEMPLATE MASONRY GALLERY SYSTEM & MODAL
+   ============================================================= */
+.cv_gallery_grid_container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     width: 100%;
-    overflow: hidden;
 }
 
-.cv_card_img {
+/* Asymmetric Mosaic Gallery System - Different Card Sizes, Exact Same 16:10 Aspect Ratio */
+.cv_mosaic_gallery_container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.cv_gallery_wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1410px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.cv_gallery_item.item-1,
+.cv_gallery_item.item-2 {
+    max-width: 665px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 1 1 665px;
+}
+
+.cv_gallery_small {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+}
+
+/* Mosaic Card Base - Strict 16:10 Aspect Ratio for Zero Distortion */
+.cv_mosaic_card {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #090e17;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.35s ease;
+}
+
+.cv_mosaic_card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 35px rgba(62, 174, 255, 0.35);
+    border-color: rgba(62, 174, 255, 0.5);
+}
+
+/* Small Card: ~320px width, ~200px height (16:10) */
+.cv_mosaic_card.cv_card_sm {
+    flex: 1 1 calc(50% - 12px);
+    width: calc(50% - 12px);
+}
+
+/* Large Card: ~665px width, ~415px height (16:10) */
+.cv_mosaic_card.cv_card_lg {
+    width: 100%;
+}
+
+.cv_mosaic_card .cv_mosaic_img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cv_project_card:hover .cv_card_img {
-    transform: scale(1.05);
+.cv_mosaic_card:hover .cv_mosaic_img {
+    transform: scale(1.06);
 }
 
-.cv_card_overlay {
+/* Authentic Signature Cyan Hover Overlay */
+.cv_mosaic_card .cv_gallery_hover {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(11, 15, 23, 0.85) 100%);
-}
-
-.cv_card_badges {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    pointer-events: none;
-}
-
-.cv_badge_category {
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #E2E8F0;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-}
-
-.cv_badge_highlight {
-    background: rgba(46, 227, 184, 0.18);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(46, 227, 184, 0.35);
-    color: #2EE3B8;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-}
-
-.cv_card_body {
-    padding: 20px;
+    width: 100%;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(180deg, rgba(62, 174, 255, 0) 0%, rgba(62, 174, 255, 0.92) 35%, rgba(62, 174, 255, 0.99) 100%);
+    padding: 20px 24px;
+    min-height: 170px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-between;
+    justify-content: flex-end;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
 }
 
-.cv_card_title {
-    font-size: 18px;
+.cv_mosaic_card:hover .cv_gallery_hover {
+    transform: translateY(0);
+}
+
+.cv_gallery_hover .cv_gallery_cat {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 12.5px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+}
+
+.cv_gallery_hover .cv_gallery_title {
     color: #ffffff;
-    margin-bottom: 8px;
-    line-height: 1.35;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.cv_card_desc {
-    color: #94A3B8;
-    font-size: 13.5px;
-    line-height: 1.55;
-    margin-bottom: 14px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.cv_card_tech_pills {
+.cv_hover_tech_row {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
 }
 
-.cv_tech_pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #CBD5E1;
+.cv_hover_tech_tag {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
     font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-.cv_card_actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.cv_btn_live {
-    background: var(--cv-primary-color);
-    color: #000000;
-    font-size: 12.5px;
-    font-weight: 700;
-    padding: 7px 14px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: all 0.2s ease;
-}
-
-.cv_btn_live:hover {
-    background: #25cba3;
-    color: #000000;
-    transform: translateY(-2px);
-}
-
-.cv_btn_code {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-    font-size: 12.5px;
     font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
+    padding: 2px 8px;
+    border-radius: 6px;
 }
 
-.cv_btn_code:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-/* Experience Developer Tech Badges */
-.cv_dev_tech_grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 18px;
-}
-
-.cv_dev_tech_item {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 10px;
-    padding: 8px 12px;
+.cv_hover_action_row {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
-.cv_dev_tech_dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--cv-primary-color);
-    box-shadow: 0 0 8px var(--cv-primary-color);
-    flex-shrink: 0;
+.cv_hover_link_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #ffffff;
+    color: #0b1120;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.cv_dev_tech_item strong {
-    display: block;
+.cv_hover_link_btn:hover {
+    background: #000000;
     color: #ffffff;
-    font-size: 12.5px;
-    line-height: 1.2;
+    transform: translateY(-2px);
 }
 
-.cv_dev_tech_item small {
-    color: #94A3B8;
-    font-size: 10.5px;
-    line-height: 1.2;
+.cv_hover_link_btn.cv_hover_github_btn {
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.cv_honor_card:hover {
-    border-color: rgba(46, 227, 184, 0.3) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+.cv_hover_link_btn.cv_hover_github_btn:hover {
+    background: #000000;
+    border-color: #ffffff;
 }
 
-/* Responsive Breakpoints for Portfolio Grid */
-@media (max-width: 1200px) {
-    .cv_portfolio_grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+.cv_hover_link_btn.cv_hover_info_btn {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cv_hover_link_btn.cv_hover_info_btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Project Details Modal */
+.cv_project_modal_backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 18, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: cvFadeIn 0.2s ease;
+}
+
+.cv_project_modal_box {
+    background: linear-gradient(165deg, #101726 0%, #080c14 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(62, 174, 255, 0.25);
+    animation: cvSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cv_project_modal_close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.cv_project_modal_close:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: scale(1.08);
+}
+
+.cv_modal_media {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.cv_modal_media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cv_modal_media_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(16, 23, 38, 0.95) 100%);
+}
+
+.cv_modal_badges_row {
+    position: absolute;
+    bottom: 16px;
+    left: 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 2;
+}
+
+.cv_modal_tag_badge {
+    background: rgba(62, 174, 255, 0.25);
+    border: 1px solid rgba(62, 174, 255, 0.5);
+    color: #3eaeff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.cv_modal_highlight_badge {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.cv_modal_content {
+    padding: 24px 28px 32px;
+}
+
+.cv_modal_title {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.cv_modal_desc {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+}
+
+.cv_modal_tech_section h5 {
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+}
+
+.cv_modal_tech_pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.cv_modal_tech_pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+
+.cv_modal_footer_actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cv_modal_btn_primary {
+    flex: 1;
+    background: var(--cv-primary-color);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(62, 174, 255, 0.35);
+}
+
+.cv_modal_btn_primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.cv_modal_btn_secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cv_modal_btn_secondary:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+@keyframes cvFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes cvSlideUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Responsive Overrides */
+@media (max-width: 1399.98px) {
+    .cv_gallery_wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .cv_gallery_item.item-2 .cv_gallery_small {
+        flex-direction: column;
     }
 }
 
-@media (max-width: 768px) {
-    .cv_portfolio_grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+@media (max-width: 991.98px) {
+    .cv_gallery_item.item-1,
+    .cv_gallery_item.item-2 {
+        max-width: 100%;
+        justify-content: center;
     }
-    .cv_port_tab_expanded {
-        max-width: 100% !important;
+    .cv_gallery_img.img-1,
+    .cv_gallery_img.img-2 {
+        width: calc(50% - 15px);
+        height: 280px;
+    }
+    .cv_gallery_img.img-3 {
+        width: 100%;
+        height: 220px;
+    }
+    .cv_gallery_img.img-4 {
+        width: 100%;
+        min-width: 100%;
+        height: 340px;
+    }
+    .cv_gallery_item.item-2 .cv_gallery_small {
+        width: 100%;
+        flex-direction: row;
+    }
+    .cv_gallery_img.img-5,
+    .cv_gallery_img.img-6 {
+        width: calc(50% - 15px);
+        height: 240px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .cv_port_tab {
+        flex-wrap: wrap;
+        padding: 8px;
+        justify-content: center;
+        max-width: 100%;
         border-radius: 16px;
     }
-    .cv_port_tab_btn {
-        padding: 6px 12px;
-        font-size: 12px;
+    .cv_port_tab li a {
+        padding: 8px 16px;
+        min-height: 36px;
+        font-size: 13px;
+    }
+    .cv_gallery_item.item-1 .cv_gallery_small,
+    .cv_gallery_item.item-2 .cv_gallery_small {
+        flex-direction: column;
+        width: 100%;
+    }
+    .cv_gallery_img.img-1,
+    .cv_gallery_img.img-2,
+    .cv_gallery_img.img-3,
+    .cv_gallery_img.img-4,
+    .cv_gallery_img.img-5,
+    .cv_gallery_img.img-6 {
+        width: 100%;
+        min-width: 100%;
+        height: 240px;
+        max-height: 240px;
+    }
+    .cv_gallery_img .cv_gallery_hover {
+        transform: translateY(0);
+        background-image: linear-gradient(180deg, rgba(62, 174, 255, 0.2) 0%, rgba(10, 14, 23, 0.95) 100%);
+        min-height: 120px;
+        padding: 14px 18px;
     }
 }
 
@@ -4514,6 +4907,43 @@ Max - Width Query
     }
     .cv_exp_bullet_item {
         font-size: 14.5px;
+    }
+    .cv_masonry_gallery_wrapper {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .cv_gallery_wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .cv_gallery_item.item-1,
+    .cv_gallery_item.item-2 {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .cv_gallery_small {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .cv_mosaic_card.cv_card_sm {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+    .cv_mosaic_card .cv_gallery_hover {
+        transform: translateY(0);
+        min-height: 140px;
+        padding: 16px 18px;
+        background-image: linear-gradient(180deg, rgba(6, 11, 20, 0) 0%, rgba(6, 11, 20, 0.88) 40%, rgba(6, 11, 20, 0.98) 100%);
+    }
+    .cv_mosaic_card .cv_gallery_title {
+        font-size: 17px;
+        margin-bottom: 6px;
+    }
+    .cv_mosaic_card .cv_gallery_cat {
+        font-size: 11px;
     }
 }
 
