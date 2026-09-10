@@ -48,6 +48,7 @@ export default function AboutSection() {
                 <div className="cv_about_btn">
                   <a
                     href={portfolioData.personal.resumeUrl}
+                    download="Md_Shakil_Khan_Resume.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="cv_btn"

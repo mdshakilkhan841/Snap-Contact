@@ -187,6 +187,7 @@ export default function HeroBanner() {
                 </Link>
                 <a
                   href={portfolioData.personal.resumeUrl}
+                  download="Md_Shakil_Khan_Resume.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="cv_btn cv_btn_outline cv_btn_resume"

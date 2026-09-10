@@ -18,7 +18,7 @@ export const portfolioData = {
     projectsCount: "25+",
     rating: "4.9",
     reviewsCount: "100%",
-    resumeUrl: "/assets/Shakil-Resume-6c5074ee.pdf",
+    resumeUrl: "/resume/Md_Shakil_Khan_Resume.pdf",
     email: "mdshakilkhan0152@gmail.com",
     phone: "+880 1521-438781",
     whatsapp: "https://wa.me/917077805522",
