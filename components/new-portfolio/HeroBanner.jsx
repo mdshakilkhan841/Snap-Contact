@@ -86,9 +86,9 @@ export default function HeroBanner() {
   return (
     <div className="cv_banner_wrapper">
       <div className="cv_container container-fluid">
-        <div className="row align-items-center justify-content-between g-4 g-xxl-5">
-          {/* Left Column: Persistent Navigation Menu (Matching Menu Overlay Design) */}
-          <div className="col-xxl-2 col-xl-3 col-lg-3 d-none d-lg-block">
+        <div className="row align-items-center justify-content-between g-4 g-xl-5">
+          {/* Left Column: Persistent Navigation Menu (Visible on Large Screens 1200px+, Hidden on Medium/Mobile) */}
+          <div className="col-xxl-2 col-xl-3 d-none d-xl-block">
             <div className="cv_home_side_nav_wrapper">
               <ul className="cv_home_side_menu">
                 {navLinks.map((item) => (
@@ -104,7 +104,7 @@ export default function HeroBanner() {
                 ))}
               </ul>
 
-              {/* Follow Me Social Section (Matching Overlay Menu in Screenshot) */}
+              {/* Follow Me Social Section */}
               <div className="cv_home_side_social">
                 <span className="cv_home_social_title">Follow Me</span>
                 <ul className="cv_home_social_list">
@@ -154,7 +154,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Center Column: Developer Introduction & Value Proposition */}
-          <div className="col-xxl-6 col-xl-5 col-lg-5 col-12">
+          <div className="col-12 col-lg-6 col-xl-5 col-xxl-6">
             <div className="cv_banner_intro">
               <h2 className="cv_greeting_heading">
                 Hello!{" "}
@@ -263,7 +263,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Right Column: Clean & Balanced Interactive VS Code / Terminal Window */}
-          <div className="col-xxl-4 col-xl-4 col-lg-4 col-12">
+          <div className="col-12 col-lg-6 col-xl-4 col-xxl-4">
             <div className="cv_banner_box cv_dev_code_window">
               <div className="cv_dev_window_header">
                 <div className="cv_dev_window_dots">

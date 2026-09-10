@@ -73,12 +73,8 @@ export default function Header() {
             <div className="col-12">
               <div className="cv_navbar">
                 <div className="cv_logo">
-                  <Link href="/new-portfolio">
-                    <img
-                      src="/new-portfolio/images/logo.png"
-                      alt="Logo"
-                      className="img-fluid"
-                    />
+                  <Link href="/new-portfolio" className="cv_signature_logo">
+                    Portfolio<span className="cv_signature_dot">.</span>
                   </Link>
                 </div>
                 <a
