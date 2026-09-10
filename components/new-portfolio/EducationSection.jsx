@@ -1,15 +1,34 @@
 "use client";
 
 import React from "react";
-import { portfolioData } from "@/data/portfolioData";
 
 export default function EducationSection() {
-  const educationList = portfolioData.education.map((item) => ({
-    title: `${item.degree} — ${item.field}`,
-    year: item.period.split(" - ")[1] || item.period,
-    institution: item.institution,
-    detail: `${item.grade}. ${item.description}`
-  }));
+  const educationList = [
+    {
+      title: "B.Tech In Computer Science & Engineering",
+      year: "2022",
+      institution: "NIT Rourkela",
+      detail: "First Class with Honors (CGPA 7.30/10). Strong foundation in algorithms, systems architecture, distributed computing, and software development."
+    },
+    {
+      title: "ICCR International Scholarship",
+      year: "2022",
+      institution: "Govt. of India / NIT Rourkela",
+      detail: "Full 4-year Government of India ICCR Scholarship recipient. International scholar representing Bangladesh with full academic merit fellowship."
+    },
+    {
+      title: "Higher Secondary Certificate (HSC)",
+      year: "2015",
+      institution: "BNMPC Dhaka",
+      detail: "Perfect GPA 5.00/5.00 in Science discipline with focus on Higher Mathematics, Physics, and analytical problem-solving."
+    },
+    {
+      title: "Secondary School Certificate (SSC)",
+      year: "2013",
+      institution: "Ibne Taimiya",
+      detail: "Perfect GPA 5.00/5.00 with academic distinction across Science, Mathematics, and foundational Computer Studies."
+    }
+  ];
 
   return (
     <section className="cv_education_wrapper">
@@ -19,7 +38,7 @@ export default function EducationSection() {
             <div className="cv_edu_heading">
               <h2>Education</h2>
               <p>
-                A rigorous academic engineering foundation in Computer Science from National Institute of Technology (NIT) Rourkela, paired with consistent top-tier distinctions.
+                A strong academic engineering background from National Institute of Technology (NIT) Rourkela, paired with consistent high-distinction milestones.
               </p>
             </div>
           </div>

@@ -107,10 +107,19 @@ export const portfolioData = {
       institution: "National Institute of Technology (NIT) Rourkela, India",
       period: "2018 - 2022",
       grade: "CGPA : 7.30 / 10 (First Class)",
-      description: "Recipient of the full 4-year Government of India ICCR Scholarship. Rigorous education across algorithms, distributed systems, DBMS, OS, computer networks, and software engineering."
+      description: "Rigorous education across algorithms, distributed systems, DBMS, OS, computer networks, and software engineering."
     },
     {
       id: 2,
+      degree: "ICCR International Scholarship",
+      field: "Govt. of India Fellowship",
+      institution: "Government of India / NIT Rourkela",
+      period: "2018 - 2022",
+      grade: "Full 4-Year Merit Award",
+      description: "Prestigious competitive fellowship awarded by the Government of India to represent Bangladesh as an international scholar."
+    },
+    {
+      id: 3,
       degree: "Higher Secondary Certificate (HSC)",
       field: "Science",
       institution: "Birshreshtha Noor Mohammad Public College, Dhaka",
@@ -119,7 +128,7 @@ export const portfolioData = {
       description: "Graduated with perfect academic distinction in Science (Physics, Chemistry, Higher Mathematics, and Biology)."
     },
     {
-      id: 3,
+      id: 4,
       degree: "Secondary School Certificate (SSC)",
       field: "Science",
       institution: "Ibne Taimiya School & College, Cumilla",
