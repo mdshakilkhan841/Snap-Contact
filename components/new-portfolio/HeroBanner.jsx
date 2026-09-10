@@ -13,11 +13,11 @@ export default function HeroBanner() {
   ];
 
   const navLinks = [
-    { href: "/new-portfolio", label: "Home" },
-    { href: "/new-portfolio/about", label: "About" },
-    { href: "/new-portfolio/portfolio", label: "My Work" },
-    { href: "/new-portfolio/strength", label: "Strength" },
-    { href: "/new-portfolio/contact", label: "Contact" }
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/portfolio", label: "My Work" },
+    { href: "/strength", label: "Strength" },
+    { href: "/contact", label: "Contact" }
   ];
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -95,7 +95,7 @@ export default function HeroBanner() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className={`cv_home_side_link ${item.href === "/new-portfolio" ? "active" : ""}`}
+                      className={`cv_home_side_link ${item.href === "/" ? "active" : ""}`}
                     >
                       <span className="cv_home_side_dash" />
                       <span className="cv_home_side_text">{item.label}</span>
@@ -182,7 +182,7 @@ export default function HeroBanner() {
 
               {/* Developer Action Deck */}
               <div className="cv_banner_actions">
-                <Link href="/new-portfolio/contact" className="cv_btn cv_btn_glow">
+                <Link href="/contact" className="cv_btn cv_btn_glow">
                   Hire Me <span>↗</span>
                 </Link>
                 <a

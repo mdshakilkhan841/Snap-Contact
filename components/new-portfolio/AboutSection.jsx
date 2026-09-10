@@ -54,7 +54,7 @@ export default function AboutSection() {
                   >
                     Download Resume
                   </a>
-                  <Link href="/new-portfolio/contact" className="cv_btn">
+                  <Link href="/contact" className="cv_btn">
                     Hire Me
                   </Link>
                 </div>

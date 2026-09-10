@@ -67,7 +67,7 @@ export default function LatestProjectsSection() {
           </div>
           <div className="col-12">
             <div className="cv_bottom_btn">
-              <Link href="/new-portfolio/portfolio" className="cv_btn">
+              <Link href="/portfolio" className="cv_btn">
                 View All 21 Projects
               </Link>
             </div>

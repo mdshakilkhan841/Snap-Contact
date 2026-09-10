@@ -29,11 +29,11 @@ export default function Header() {
   }, [pathname]);
 
   const navLinks = [
-    { href: "/new-portfolio", label: "Home", exact: true },
-    { href: "/new-portfolio/about", label: "About" },
-    { href: "/new-portfolio/portfolio", label: "My Work" },
-    { href: "/new-portfolio/strength", label: "Strength" },
-    { href: "/new-portfolio/contact", label: "Contact" }
+    { href: "/", label: "Home", exact: true },
+    { href: "/about", label: "About" },
+    { href: "/portfolio", label: "My Work" },
+    { href: "/strength", label: "Strength" },
+    { href: "/contact", label: "Contact" }
   ];
 
   // Prefetch routes for seamless zero-lag navigation
@@ -47,7 +47,7 @@ export default function Header() {
     if (item.exact) {
       return pathname === item.href;
     }
-    return pathname.startsWith(item.href);
+    return pathname === item.href || pathname.startsWith(item.href + "/");
   };
 
   const handleNavClick = (e, href) => {
@@ -73,7 +73,7 @@ export default function Header() {
             <div className="col-12">
               <div className="cv_navbar">
                 <div className="cv_logo">
-                  <Link href="/new-portfolio" className="cv_signature_logo">
+                  <Link href="/" className="cv_signature_logo">
                     Portfolio<span className="cv_signature_dot">.</span>
                   </Link>
                 </div>

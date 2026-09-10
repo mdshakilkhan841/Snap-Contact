@@ -3,6 +3,11 @@ import TopIcon from "@/components/new-portfolio/TopIcon";
 import Header from "@/components/new-portfolio/Header";
 import PageTransition from "@/components/new-portfolio/PageTransition";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1
+};
+
 export const metadata = {
   title: "Md Shakil Khan | Full Stack Software Engineer",
   description:
@@ -19,11 +24,10 @@ export const metadata = {
     "NIT Rourkela",
     "Dhaka Bangladesh"
   ],
-  authors: [{ name: "Md Shakil Khan" }],
-  viewport: "width=device-width, initial-scale=1"
+  authors: [{ name: "Md Shakil Khan" }]
 };
 
-export default function NewPortfolioLayout({ children }) {
+export default function PortfolioLayout({ children }) {
   return (
     <div className="cv_main_wrapper">
       <TopIcon />
