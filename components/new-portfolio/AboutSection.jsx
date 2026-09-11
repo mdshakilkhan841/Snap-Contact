@@ -2,61 +2,71 @@
 
 import React from "react";
 import Link from "next/link";
+import { FaGraduationCap, FaPaperPlane } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function AboutSection() {
   return (
-    <div className="cv_about_wrapper">
+    <div className="cv_about_wrapper" id="about">
       <div className="cv_container container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <div className="cv_about_content">
-              <div className="cv_about_img">
-                <img
-                  src="/new-portfolio/images/about-img.webp"
-                  alt="About Shakil"
-                  className="img-fluid"
-                />
-                <div className="cv_about_experience">
-                  <div className="cv_about_exp">
-                    <h2>{portfolioData.personal.experienceYears}</h2>
-                    <span>
-                      <p>YEARS</p>
-                      <p>OF EXPERIENCE</p>
-                    </span>
+        <div className="row justify-content-center">
+          <div className="col-12 col-xl-11 col-xxl-10">
+            {/* Header: — About Me */}
+            <div className="cv_about_header_area">
+              <span className="cv_about_header_line" />
+              <h2 className="cv_about_header_title">About Me</h2>
+            </div>
+
+            {/* Main Glassmorphism Card */}
+            <div className="cv_about_card_container">
+              {/* Left Column: Photo with Badges */}
+              <div className="cv_about_photo_col">
+                <div className="cv_about_photo_wrapper">
+                  {/* Top-Left Graduate Badge */}
+                  <div className="cv_badge_graduate">
+                    <div className="cv_badge_graduate_icon">
+                      <FaGraduationCap />
+                    </div>
+                    <div className="cv_badge_graduate_text">
+                      <h4 className="cv_badge_grad_title">GRADUATE</h4>
+                      <p className="cv_badge_grad_sub">B.Tech (CSE)</p>
+                      <p className="cv_badge_grad_inst">NIT Rourkela (2022)</p>
+                    </div>
                   </div>
-                  <div className="cv_about_rating">
-                    <span>
-                      <img
-                        src="/new-portfolio/images/rating.svg"
-                        alt="Rating"
-                      />
-                      <h6>{portfolioData.personal.rating}</h6>
-                    </span>
-                    <p>High-Quality Reviews</p>
+
+                  {/* Photo Frame Box */}
+                  <div className="cv_about_photo_box">
+                    <img
+                      src="/new-portfolio/images/about-img.png"
+                      alt="Md Shakil Khan - About"
+                      className="cv_about_photo_img"
+                    />
                   </div>
                 </div>
               </div>
 
-              <div className="cv_about_info">
-                <h2>About Me</h2>
-                <div className="cv_about_box">
-                  <h3>Who I’m</h3>
+              {/* Right Column: Bio Info & Action Buttons */}
+              <div className="cv_about_info_col">
+                <h3 className="cv_about_who_title">Who I’m</h3>
+                <div className="cv_about_desc">
                   <p>{portfolioData.personal.detailedBio[0]}</p>
                   <p>{portfolioData.personal.detailedBio[1]}</p>
                 </div>
-                <div className="cv_about_btn">
+                <div className="cv_about_action_btns">
                   <a
                     href={portfolioData.personal.resumeUrl}
                     download="Md_Shakil_Khan_Resume.pdf"
                     target="_blank"
                     rel="noreferrer"
-                    className="cv_btn"
+                    className="cv_about_btn cv_about_btn_resume"
                   >
-                    Download Resume
+                    <FiDownload className="cv_btn_icon" />
+                    <span>Download Resume</span>
                   </a>
-                  <Link href="/contact" className="cv_btn">
-                    Hire Me
+                  <Link href="/contact" className="cv_about_btn cv_about_btn_hire">
+                    <FaPaperPlane className="cv_btn_icon" />
+                    <span>Hire Me</span>
                   </Link>
                 </div>
               </div>
@@ -67,3 +77,4 @@ export default function AboutSection() {
     </div>
   );
 }
+
