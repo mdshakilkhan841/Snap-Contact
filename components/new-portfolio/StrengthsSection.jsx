@@ -37,13 +37,6 @@ export default function StrengthsSection() {
                 From scalable full-stack applications to native mobile solutions, I engineer robust systems designed for performance, security, and exceptional user experience.
               </p>
             </div>
-            <div className="cv_do_img">
-              <img
-                src="/new-portfolio/images/do_img.webp"
-                alt="What I Do"
-                className="img-fluid"
-              />
-            </div>
           </div>
           <div className="col-xl-8">
             <div className="row">
