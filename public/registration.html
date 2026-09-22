@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Automation Testing Portal | User Registration</title>
+  <meta name="description" content="Registration form engineered specifically for Selenium IDE, TestCase Studio, and Automation Testing practices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-border: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --accent: #0284c7;
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --success-text: #065f46;
+      --error-bg: #fef2f2;
+      --error-border: #ef4444;
+      --error-text: #991b1c;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --input-bg: #ffffff;
+      --input-border: #cbd5e1;
+      --input-focus: #4f46e5;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(at 10% 15%, rgba(99, 102, 241, 0.06) 0px, transparent 40%),
+        radial-gradient(at 90% 85%, rgba(14, 165, 233, 0.06) 0px, transparent 40%),
+        radial-gradient(at 50% 50%, #f1f5f9 0px, transparent 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 20px 20px 32px;
+    }
+
+    /* Student Top Header Bar */
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto 16px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--bg-card-border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .student-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .student-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .student-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+    }
+
+    .student-meta {
+      font-size: 0.84rem;
+      color: #64748b;
+    }
+
+    .student-meta strong {
+      color: #1e293b;
+    }
+
+    .assignment-tag {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #4f46e5;
+      background: #eef2ff;
+      border: 1px solid #e0e7ff;
+      padding: 5px 14px;
+      border-radius: 6px;
+    }
+
+    /* Main Container Grid */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    @media (max-width: 960px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card Base */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03), 0 10px 20px -3px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Alerts */
+    .alert {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 18px;
+      display: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    .alert.visible {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .alert-success {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+    }
+
+    .alert-error {
+      background: var(--error-bg);
+      border: 1px solid var(--error-border);
+      color: var(--error-text);
+    }
+
+    .alert-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* Form Fields */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #334155;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .req {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+
+    .locator-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #6366f1;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px 13px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--input-focus);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    input.input-error,
+    select.input-error {
+      border-color: var(--error-border);
+      background: #fff5f5;
+    }
+
+    .field-error {
+      color: #dc2626;
+      font-size: 0.74rem;
+      margin-top: 4px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .field-error.visible {
+      display: block;
+    }
+
+    /* Checkbox & Terms */
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.84rem;
+      color: #334155;
+      margin-top: 2px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-top: 1px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 11px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.22);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.32);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    /* Right Column: Integrated Automation Hub */
+    .qa-panel {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* Preset Test Scenarios */
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-scenarios {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .btn-preset {
+      padding: 9px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: left;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #1e293b;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .btn-preset span.desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .btn-preset.tc1 {
+      border-left: 3px solid #10b981;
+    }
+    .btn-preset.tc2 {
+      border-left: 3px solid #f43f5e;
+    }
+    .btn-preset.tc3 {
+      border-left: 3px solid #f59e0b;
+    }
+    .btn-preset.tc4 {
+      border-left: 3px solid #6366f1;
+    }
+
+    .btn-preset:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Terminal Container - High Height & Pro Styling */
+    .terminal-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 24px rgba(0, 0, 0, 0.15);
+      min-height: 400px;
+    }
+
+    .terminal-header {
+      background: #0f172a;
+      padding: 9px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .terminal-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pulse-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .btn-clear-term {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-family: inherit;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-clear-term:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+    }
+
+    /* Live Event Log Console Inside Terminal */
+    .log-console {
+      background: transparent;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      flex: 1;
+      height: 380px;
+      min-height: 380px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 6px;
+    }
+
+    /* Custom Scrollbar for Terminal */
+    .log-console::-webkit-scrollbar {
+      width: 6px;
+    }
+    .log-console::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    .log-console::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    .log-console::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    .log-entry {
+      line-height: 1.45;
+      display: flex;
+      gap: 8px;
+    }
+
+    .log-time {
+      color: #64748b;
+      flex-shrink: 0;
+    }
+
+    .log-tag {
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.67rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tag-click { background: rgba(14, 165, 233, 0.2); color: #38bdf8; }
+    .tag-input { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+    .tag-pass  { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .tag-fail  { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .tag-info  { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; }
+
+    .log-msg {
+      color: #f1f5f9;
+      word-break: break-all;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1200px;
+      margin: 16px auto 0;
+      width: 100%;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.78rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Student Assignment Top Bar (Clean, Minimal, Professional) -->
+  <header class="top-bar">
+    <div class="student-info">
+      <div class="student-avatar">SK</div>
+      <div>
+        <span class="student-name">MD SHAKIL KHAN</span>
+        <span class="student-meta">&nbsp;|&nbsp; ID: <strong>262011</strong> &nbsp;|&nbsp; Sec: <strong>A</strong></span>
+      </div>
+    </div>
+    <div class="assignment-tag">
+      Assignment 01: Automation Testing
+    </div>
+  </header>
+
+  <!-- Main Grid Content -->
+  <main>
+    <!-- Left Column: The Registration Form -->
+    <section class="card" aria-labelledby="form-heading">
+      <h2 id="form-heading" class="card-title">
+        <span>Create QA Account</span>
+      </h2>
+      <p class="card-subtitle">
+        Fill out test fields. All inputs have deterministic IDs for automated recording and playback.
+      </p>
+
+      <!-- Assertions Alert Banners -->
+      <div id="success-alert" class="alert alert-success" role="alert" data-testid="alert-success">
+        <span class="alert-icon">✓</span>
+        <div>
+          <strong id="success-title">Registration Successful!</strong>
+          <p id="success-message">Welcome aboard! Your automated test registration was verified.</p>
+        </div>
+      </div>
+
+      <div id="error-alert" class="alert alert-error" role="alert" data-testid="alert-error">
+        <span class="alert-icon">✕</span>
+        <div>
+          <strong id="error-title">Validation Error</strong>
+          <p id="error-message">Please correct the highlighted fields before submitting.</p>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="registration-form" data-testid="form-registration" novalidate>
+        <div class="form-grid">
+          
+          <!-- Full Name -->
+          <div class="form-group full-width">
+            <label for="fullName">
+              <span>Full Name <span class="req">*</span></span>
+              <span class="locator-tag">#fullName</span>
+            </label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              placeholder="e.g. Johnathan Doe"
+              autocomplete="name" 
+              data-testid="input-fullName"
+              required
+            >
+            <div id="err-fullName" class="field-error" data-testid="err-fullName">Full name is required (min 2 characters).</div>
+          </div>
+
+          <!-- Username -->
+          <div class="form-group">
+            <label for="username">
+              <span>Username <span class="req">*</span></span>
+              <span class="locator-tag">#username</span>
+            </label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              placeholder="e.g. john_tester"
+              autocomplete="username" 
+              data-testid="input-username"
+              required
+            >
+            <div id="err-username" class="field-error" data-testid="err-username">Username is required (min 3 characters).</div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">
+              <span>Email Address <span class="req">*</span></span>
+              <span class="locator-tag">#email</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="e.g. john.tester@example.com"
+              autocomplete="email" 
+              data-testid="input-email"
+              required
+            >
+            <div id="err-email" class="field-error" data-testid="err-email">Please enter a valid email address.</div>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="phone">
+              <span>Phone Number</span>
+              <span class="locator-tag">#phone</span>
+            </label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              placeholder="e.g. +1 555 987 6543"
+              autocomplete="tel" 
+              data-testid="input-phone"
+            >
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label for="gender">
+              <span>Gender</span>
+              <span class="locator-tag">#gender</span>
+            </label>
+            <select id="gender" name="gender" data-testid="select-gender">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other / Prefer not to say</option>
+            </select>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">
+              <span>Password <span class="req">*</span></span>
+              <span class="locator-tag">#password</span>
+            </label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="Minimum 6 characters"
+              autocomplete="new-password" 
+              data-testid="input-password"
+              required
+            >
+            <div id="err-password" class="field-error" data-testid="err-password">Password must be at least 6 characters.</div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">
+              <span>Confirm Password <span class="req">*</span></span>
+              <span class="locator-tag">#confirmPassword</span>
+            </label>
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              name="confirmPassword" 
+              placeholder="Re-enter password"
+              autocomplete="new-password" 
+              data-testid="input-confirmPassword"
+              required
+            >
+            <div id="err-confirmPassword" class="field-error" data-testid="err-confirmPassword">Passwords do not match.</div>
+          </div>
+
+          <!-- Terms & Conditions Checkbox -->
+          <div class="form-group full-width">
+            <label class="checkbox-container" for="terms">
+              <input type="checkbox" id="terms" name="terms" data-testid="checkbox-terms" required>
+              <span>I agree to the <strong style="color: var(--primary);">QA Terms & Conditions</strong> <span class="req">*</span></span>
+            </label>
+            <div id="err-terms" class="field-error" data-testid="err-terms">You must accept the terms before registering.</div>
+          </div>
+
+        </div>
+
+        <!-- Submit & Reset Action Buttons -->
+        <div class="button-group">
+          <button type="submit" id="btn-submit" class="btn btn-primary" data-testid="btn-submit">
+            <span>Register Account</span>
+            <span>→</span>
+          </button>
+          <button type="button" id="btn-reset" class="btn btn-secondary" data-testid="btn-reset">
+            <span>Reset Form</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Right Column: Integrated Automation Hub & Extended Terminal -->
+    <aside class="card qa-panel">
+      
+      <!-- Preset Test Scenarios -->
+      <h3 class="section-title">
+        <span>⚡ Quick Test Scenarios</span>
+      </h3>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">
+        Click to populate test data during Selenium IDE or TestCase Studio recording:
+      </p>
+
+      <div class="quick-scenarios">
+        <button type="button" id="btn-fill-valid" class="btn-preset tc1" data-testid="btn-fill-valid">
+          <span style="color: #059669;">TC01: Valid Data</span>
+          <span class="desc">Populates all fields validly</span>
+        </button>
+
+        <button type="button" id="btn-fill-mismatch" class="btn-preset tc2" data-testid="btn-fill-mismatch">
+          <span style="color: #dc2626;">TC02: Password Mismatch</span>
+          <span class="desc">Pass123 vs Pass999</span>
+        </button>
+
+        <button type="button" id="btn-fill-invalid-email" class="btn-preset tc3" data-testid="btn-fill-invalid-email">
+          <span style="color: #d97706;">TC03: Bad Email</span>
+          <span class="desc">Missing @ / domain</span>
+        </button>
+
+        <button type="button" id="btn-clear-fields" class="btn-preset tc4" data-testid="btn-clear-fields">
+          <span style="color: #4f46e5;">TC04: Clear All</span>
+          <span class="desc">Tests blank fields error</span>
+        </button>
+      </div>
+
+      <!-- Professional Terminal Frame -->
+      <div class="terminal-wrapper">
+        <div class="terminal-header">
+          <div class="terminal-controls">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <div class="terminal-title">
+            <span class="pulse-indicator"></span>
+            <span>test-stream.log</span>
+          </div>
+          <button type="button" id="btn-clear-log" class="btn-clear-term">Clear</button>
+        </div>
+
+        <div id="qa-event-log" class="log-console" data-testid="log-console">
+          <!-- Logs injected by JavaScript -->
+          <div class="log-entry">
+            <span class="log-time">00:00:00</span>
+            <span class="log-tag tag-info">READY</span>
+            <span class="log-msg">Portal ready for Selenium IDE & TestCase Studio recording.</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Automated QA Testing Suite • Assignment 01</p>
+  </footer>
+
+  <!-- Script for Validation, Automation Hooks, and Logging -->
+  <script>
+    (function() {
+      // DOM Elements
+      const form = document.getElementById('registration-form');
+      const fullNameInput = document.getElementById('fullName');
+      const usernameInput = document.getElementById('username');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const genderSelect = document.getElementById('gender');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      const termsCheckbox = document.getElementById('terms');
+      const resetBtn = document.getElementById('btn-reset');
+
+      // Alerts
+      const successAlert = document.getElementById('success-alert');
+      const successMessage = document.getElementById('success-message');
+      const errorAlert = document.getElementById('error-alert');
+      const errorMessage = document.getElementById('error-message');
+
+      // Error Labels
+      const errFullName = document.getElementById('err-fullName');
+      const errUsername = document.getElementById('err-username');
+      const errEmail = document.getElementById('err-email');
+      const errPassword = document.getElementById('err-password');
+      const errConfirmPassword = document.getElementById('err-confirmPassword');
+      const errTerms = document.getElementById('err-terms');
+
+      // Quick Fills
+      const btnFillValid = document.getElementById('btn-fill-valid');
+      const btnFillMismatch = document.getElementById('btn-fill-mismatch');
+      const btnFillInvalidEmail = document.getElementById('btn-fill-invalid-email');
+      const btnClearFields = document.getElementById('btn-clear-fields');
+      const btnClearLog = document.getElementById('btn-clear-log');
+      const logConsole = document.getElementById('qa-event-log');
+
+      // Logger Helper
+      function logEvent(tag, message, tagClass = 'tag-info') {
+        const now = new Date();
+        const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0');
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        entry.innerHTML = `
+          <span class="log-time">${timeStr}</span>
+          <span class="log-tag ${tagClass}">${tag}</span>
+          <span class="log-msg">${message}</span>
+        `;
+        logConsole.prepend(entry);
+      }
+
+      // Input Event Listeners for Live Logging
+      [fullNameInput, usernameInput, emailInput, phoneInput, passwordInput, confirmPasswordInput].forEach(input => {
+        input.addEventListener('change', () => {
+          logEvent('INPUT', `${input.id} value set to "${input.type === 'password' ? '••••••' : input.value}"`, 'tag-input');
+        });
+      });
+
+      genderSelect.addEventListener('change', () => {
+        logEvent('SELECT', `#gender option selected: "${genderSelect.value}"`, 'tag-input');
+      });
+
+      termsCheckbox.addEventListener('change', () => {
+        logEvent('CHECK', `#terms checked: ${termsCheckbox.checked}`, 'tag-click');
+      });
+
+      // Clear all error states
+      function clearErrors() {
+        errorAlert.classList.remove('visible');
+        successAlert.classList.remove('visible');
+
+        const inputs = [fullNameInput, usernameInput, emailInput, passwordInput, confirmPasswordInput];
+        inputs.forEach(input => input.classList.remove('input-error'));
+
+        const errorLabels = [errFullName, errUsername, errEmail, errPassword, errConfirmPassword, errTerms];
+        errorLabels.forEach(el => el.classList.remove('visible'));
+      }
+
+      // Validation logic
+      function validateForm() {
+        clearErrors();
+        let isValid = true;
+        const errors = [];
+
+        // Full Name check
+        if (!fullNameInput.value.trim() || fullNameInput.value.trim().length < 2) {
+          fullNameInput.classList.add('input-error');
+          errFullName.classList.add('visible');
+          errors.push('Full Name');
+          isValid = false;
+        }
+
+        // Username check
+        if (!usernameInput.value.trim() || usernameInput.value.trim().length < 3) {
+          usernameInput.classList.add('input-error');
+          errUsername.classList.add('visible');
+          errors.push('Username');
+          isValid = false;
+        }
+
+        // Email check
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+          emailInput.classList.add('input-error');
+          errEmail.classList.add('visible');
+          errors.push('Email');
+          isValid = false;
+        }
+
+        // Password check
+        if (!passwordInput.value || passwordInput.value.length < 6) {
+          passwordInput.classList.add('input-error');
+          errPassword.classList.add('visible');
+          errors.push('Password');
+          isValid = false;
+        }
+
+        // Confirm Password check
+        if (passwordInput.value !== confirmPasswordInput.value || !confirmPasswordInput.value) {
+          confirmPasswordInput.classList.add('input-error');
+          errConfirmPassword.classList.add('visible');
+          errors.push('Confirm Password');
+          isValid = false;
+        }
+
+        // Terms check
+        if (!termsCheckbox.checked) {
+          errTerms.classList.add('visible');
+          errors.push('Terms');
+          isValid = false;
+        }
+
+        return { isValid, errors };
+      }
+
+      // Form Submit Handler
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        logEvent('CLICK', '#btn-submit button clicked', 'tag-click');
+
+        const result = validateForm();
+
+        if (result.isValid) {
+          const user = usernameInput.value.trim();
+          successMessage.textContent = `Registration Successful! Account created for ${user}. Ready for assertion.`;
+          successAlert.classList.add('visible');
+          logEvent('PASS', `SUCCESS: All validation checks passed for user "${user}"`, 'tag-pass');
+        } else {
+          errorMessage.textContent = `Validation Failed on: ${result.errors.join(', ')}.`;
+          errorAlert.classList.add('visible');
+          logEvent('FAIL', `ERROR: Failed fields: ${result.errors.join(', ')}`, 'tag-fail');
+        }
+      });
+
+      // Reset Button Handler
+      resetBtn.addEventListener('click', function() {
+        form.reset();
+        clearErrors();
+        logEvent('CLICK', '#btn-reset clicked. Form reset to initial empty state.', 'tag-click');
+      });
+
+      // Quick-Fill Presets for Easy Automation Recording
+      btnFillValid.addEventListener('click', function() {
+        clearErrors();
+        fullNameInput.value = 'Johnathan Doe';
+        usernameInput.value = 'john_tester';
+        emailInput.value = 'john.tester@example.com';
+        phoneInput.value = '+1 555 987 6543';
+        genderSelect.value = 'male';
+        passwordInput.value = 'P@ssword2026!';
+        confirmPasswordInput.value = 'P@ssword2026!';
+        termsCheckbox.checked = true;
+        logEvent('PRESET', 'TC01: Valid test data populated into all form fields.', 'tag-info');
+      });
+
+      btnFillMismatch.addEventListener('click', function() {
+        clearErrors();
+        fullNameInput.value = 'Sarah Connor';
+        usernameInput.value = 'sarah_c';
+        emailInput.value = 'sarah.c@sky.net';
+        phoneInput.value = '+1 555 123 4567';
+        genderSelect.value = 'female';
+        passwordInput.value = 'Passw0rdOne!';
+        confirmPasswordInput.value = 'Passw0rdDifferent!';
+        termsCheckbox.checked = true;
+        logEvent('PRESET', 'TC02: Password mismatch test data populated.', 'tag-fail');
+      });
+
+      btnFillInvalidEmail.addEventListener('click', function() {
+        clearErrors();
+        fullNameInput.value = 'Alex Morgan';
+        usernameInput.value = 'alex_m';
+        emailInput.value = 'alex_not_an_email';
+        phoneInput.value = '+1 555 456 7890';
+        genderSelect.value = 'other';
+        passwordInput.value = 'Secret789!';
+        confirmPasswordInput.value = 'Secret789!';
+        termsCheckbox.checked = true;
+        logEvent('PRESET', 'TC03: Invalid email syntax test data populated.', 'tag-fail');
+      });
+
+      btnClearFields.addEventListener('click', function() {
+        form.reset();
+        clearErrors();
+        logEvent('PRESET', 'TC04: All fields cleared for empty-submit test.', 'tag-info');
+      });
+
+      btnClearLog.addEventListener('click', function() {
+        logConsole.innerHTML = '';
+        logEvent('LOG', 'Execution log console cleared.', 'tag-info');
+      });
+
+    })();
+  </script>
+</body>
+</html>
